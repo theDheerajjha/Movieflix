@@ -141,8 +141,9 @@ const FilterBar: React.FC<{ onCategoryClick: (category: string) => void }> = ({
       {categories.map((category) => (
         <button
           key={category.id}
-          className={`filter-button ${activeCategory === category.id ? "active" : ""
-            }`}
+          className={`filter-button ${
+            activeCategory === category.id ? "active" : ""
+          }`}
           onClick={() => handleButtonClick(category.id)}
         >
           {category.name}
