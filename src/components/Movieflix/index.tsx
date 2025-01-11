@@ -41,7 +41,7 @@ const Movieflix: React.FC = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching movies:", error);
-        alert(" MovieDB API key is expired.");
+        alert(" MovieDB API key is expired. Please reach out to App maintainer.");
         setLoading(false);
       }
     }
