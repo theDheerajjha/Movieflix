@@ -29,10 +29,19 @@ const Movieflix: React.FC = () => {
           `https://api.themoviedb.org/3/discover/movie?api_key=2dca580c2a14b55200e784d157207b4d&sort_by=popularity.desc&primary_release_year=${currentYear}&page=1&vote_count.gte=100`
         );
         const data = await response.json();
-        setMovies((prevMovies) => [...prevMovies, ...data.results]);
+        console.log("data", data);
+
+        if (data.results && data.results.length > 0) {
+          setMovies((prevMovies) => [...prevMovies, ...data.results]);
+        } else if (data.status_code === 7) {
+          alert("API key is expired.");
+        } else {
+          alert("No movies found.");
+        }
         setLoading(false);
       } catch (error) {
         console.error("Error fetching movies:", error);
+        alert(" MovieDB API key is expired.");
         setLoading(false);
       }
     }
